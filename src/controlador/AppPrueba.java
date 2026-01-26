@@ -1,14 +1,17 @@
-package dao;
+package controlador;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import base.Menu;
+import dao.AlumnoDao;
 import interfaz.AlumnoDaoImpl;
 import modelo.Alumno;
 
 public class AppPrueba {
 	public static void main(String[] args) {
-		testDao();
+		Menu m = new Menu();
+		m.init();
 	}
 
 	public static void testDao() {
@@ -39,15 +42,15 @@ public class AppPrueba {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
-			Alumno a1=dao.getById(123);
-			System.out.println(" "+a1);
+			Alumno a1 = dao.getById(123);
+			System.out.println(" " + a1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
 			dao.delete(5678);
 		} catch (SQLException e) {

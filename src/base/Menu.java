@@ -3,25 +3,33 @@ package base;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
+import dao.AlumnoDao;
+import interfaz.AlumnoDaoImpl;
+import modelo.Alumno;
+
 public class Menu {
+	private AlumnoDao alumnoDao;
 
-	private KeyboardReader reader = new KeyboardReader();
-
-	public void init() {
+	public void init( ) {
+		Scanner entrada=new Scanner(System.in);
 		int opcion;
 		do {
 			menu();
-			opcion = reader.nextInt();
+			opcion = entrada.nextInt();
 			switch (opcion) {
 			case 1:
 				break;
 			case 2:
 				break;
 			case 3:
+				insertar();
+
 				break;
 			case 4:
 				break;
@@ -40,7 +48,8 @@ public class Menu {
 	}
 
 	public Menu() {
-
+		super();
+		alumnoDao = AlumnoDaoImpl.getInstance();
 	}
 
 	public void menu() {
@@ -56,62 +65,47 @@ public class Menu {
 		System.out.println("5: Eliminar un empleado");
 		System.out.print("\nOpción: ");
 	}
-}
 
-	class KeyboardReader {
+	public void insertar() {
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Empecemos coknk la inserccion de un alumno");
 
-		BufferedReader br;
-		StringTokenizer st;
+		System.out.println("Dime el nia del alumno");
+		int nia = entrada.nextInt();
 
-		public KeyboardReader() {
-			br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Dime el nombre del alumno sin los apellidos");
+		String nombre = entrada.nextLine();
+
+		System.out.println("Dime el apellido del alumnos");
+		String apellido = entrada.next();
+
+		System.out.println("Dime el año de  fecha de nacimiento del alumno");
+		int anio = entrada.nextInt();
+
+		System.out.println("Dime el mes de  fecha de nacimiento del alumno");
+		int mes = entrada.nextInt();
+
+		System.out.println("Dime el dia de  fecha de nacimiento del alumno");
+		int dia = entrada.nextInt();
+
+		System.out.println("Dime el ciclo que esta cursando el alumno");
+		String ciclo = entrada.next();
+
+		System.out.println("Dime el curso del alumno");
+		String curso = entrada.next();
+
+		System.out.println("Dime en que grupo del curso esta el alumno");
+		String grupo = entrada.next();
+
+		System.out.println("Dime el genero del alumno");
+		String genero = entrada.next();
+
+		Alumno al = new Alumno(nombre, apellido, ciclo, curso, grupo, nia, genero, LocalDate.of(anio, mes, dia));
+		try {
+			alumnoDao.add(al);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		String next() {
-
-			while (st == null || !st.hasMoreElements()) {
-				try {
-					st = new StringTokenizer(br.readLine());
-				} catch (IOException ex) {
-					System.err.println("Error leyendo del teclado");
-					ex.printStackTrace();
-				}
-			}
-
-			return st.nextToken();
-
-		}
-
-		int nextInt() {
-			return Integer.parseInt(next());
-
-		}
-
-		double nextDouble() {
-			return Double.parseDouble(next());
-
-		}
-
-		LocalDate nextLocalDate() {
-			return LocalDate.parse(next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
-		}
-		
-		String nextLine() {
-			String str = "";
-			try {
-			if (st.hasMoreElements())
-			str = st.nextToken (  "\n");
-			else
-			str = br.readLine();
-			} catch (IOException ex) {
-			System.err.println("Error leyendo del teclado");
-			ex.printStackTrace();
-
-			}
-
-			return str;
-		
-		}
-		
 	}
+}
