@@ -98,7 +98,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 					al.setNombre(rs.getString("nombre"));
 					al.setApellidos(rs.getString("apellidos"));
 					al.setGenero(rs.getString("genero"));
-					// Importante: convertir sql.Date a LocalDate
+					//  convertir sql.Date a LocalDate
 					al.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
 					al.setCiclo(rs.getString("ciclo"));
 					al.setCurso(rs.getString("curso"));

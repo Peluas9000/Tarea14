@@ -14,26 +14,30 @@ import interfaz.AlumnoDaoImpl;
 import modelo.Alumno;
 
 public class Menu {
-	private AlumnoDao alumnoDao;
+	private AlumnoDaoImpl alumnoDao;
 
-	public void init( ) {
-		Scanner entrada=new Scanner(System.in);
+	public void init() {
+		Scanner entrada = new Scanner(System.in);
 		int opcion;
 		do {
 			menu();
 			opcion = entrada.nextInt();
 			switch (opcion) {
 			case 1:
+				mostrarTodosLosAlumnos();
 				break;
 			case 2:
+				mostarAlumnoPorId();
 				break;
 			case 3:
 				insertar();
 
 				break;
 			case 4:
+				actualizarAlumno();
 				break;
 			case 5:
+				eliminaPorId();
 				break;
 			case 0:
 				System.out.println("Saliendo del programa");
@@ -59,10 +63,10 @@ public class Menu {
 		System.out.println("-> Introduzca una opción de entre las siguientes: \n");
 		System.out.println("0: Salir");
 		System.out.println("1: Listar todos los empleados");
-		System.out.println("2: Listar un empleado por su ID");
-		System.out.println("3: Insertar un nuevo empleado");
-		System.out.println("4: Actualizar un empleado");
-		System.out.println("5: Eliminar un empleado");
+		System.out.println("2: Listar un alumno por su ID");
+		System.out.println("3: Insertar un nuevo alumno");
+		System.out.println("4: Actualizar un alumno");
+		System.out.println("5: Eliminar un alumno");
 		System.out.print("\nOpción: ");
 	}
 
@@ -103,6 +107,90 @@ public class Menu {
 		Alumno al = new Alumno(nombre, apellido, ciclo, curso, grupo, nia, genero, LocalDate.of(anio, mes, dia));
 		try {
 			alumnoDao.add(al);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void mostrarTodosLosAlumnos() {
+		System.out.println("-------Aqui estan todos los alumnos guradados-------");
+		try {
+			for(Alumno a:alumnoDao.getAll()) {
+				System.out.println(a);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void mostarAlumnoPorId() {
+		Scanner entrada = new Scanner(System.in);
+
+		System.out.println("Dime el id del alumno para mostrar");
+		int nia = entrada.nextInt();
+
+		try {
+			alumnoDao.getById(nia).toString();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void actualizarAlumno() {
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("Empecemos con la actualizacion de un alumno");
+
+		System.out.println("Dime el nia del alumno que hay que actualizar");
+		int nia = entrada.nextInt();
+
+		System.out.println("Dime el nombre del alumno sin los apellidos");
+		String nombre = entrada.nextLine();
+
+		System.out.println("Dime el apellido del alumnos");
+		String apellido = entrada.nextLine();
+
+		System.out.println("Dime el año de  fecha de nacimiento del alumno");
+		int anio = entrada.nextInt();
+
+		System.out.println("Dime el mes de  fecha de nacimiento del alumno");
+		int mes = entrada.nextInt();
+
+		System.out.println("Dime el dia de  fecha de nacimiento del alumno");
+		int dia = entrada.nextInt();
+
+		System.out.println("Dime el ciclo que esta cursando el alumno");
+		String ciclo = entrada.next();
+
+		System.out.println("Dime el curso del alumno");
+		String curso = entrada.next();
+
+		System.out.println("Dime en que grupo del curso esta el alumno");
+		String grupo = entrada.next();
+
+		System.out.println("Dime el genero del alumno");
+		String genero = entrada.next();
+
+		Alumno al = new Alumno(nombre, apellido, ciclo, curso, grupo, nia, genero, LocalDate.of(anio, mes, dia));
+
+		try {
+			alumnoDao.update(al);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void eliminaPorId() {
+		Scanner entrada=new Scanner(System.in);
+		System.out.println("Dime el id del alumno a eliminar");
+		int id=entrada.nextInt();
+		
+		try {
+			alumnoDao.delete(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

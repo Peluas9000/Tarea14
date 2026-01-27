@@ -10,6 +10,7 @@ public class Alumno {
 	private String genero;
 	private LocalDate fecha_nacimiento;
 	
+	
 	public Alumno() {
 		
 	}
