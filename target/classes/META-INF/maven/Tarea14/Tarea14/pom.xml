@@ -10,7 +10,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
         <configuration>
-          <release>22</release>
+          <release>21</release>
         </configuration>
       </plugin>
     </plugins>
@@ -44,38 +44,5 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<version>9.5.0</version>
 		</dependency>
-		
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>5.10.0</version>
-        <scope>test</scope>
-    </dependency>
-
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.10.0</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>AccesoDatos</groupId>
-    	<artifactId>AccesoDatos</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>5.10.0</version>
-        <scope>test</scope>
-    </dependency>
-
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.10.0</version>
-        <scope>test</scope>
-    </dependency>
   </dependencies>
-
 </project>
