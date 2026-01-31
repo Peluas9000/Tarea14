@@ -44,5 +44,6 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<version>9.5.0</version>
 		</dependency>
+		
   </dependencies>
 </project>
