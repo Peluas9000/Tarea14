@@ -1,7 +1,15 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=21
+=======
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=18
+>>>>>>> branch 'master' of https://github.com/Peluas9000/Tarea14.git
 org.eclipse.jdt.core.compiler.codegen.unusedLocal=preserve
+<<<<<<< HEAD
 org.eclipse.jdt.core.compiler.compliance=21
+=======
+org.eclipse.jdt.core.compiler.compliance=18
+>>>>>>> branch 'master' of https://github.com/Peluas9000/Tarea14.git
 org.eclipse.jdt.core.compiler.debug.lineNumber=generate
 org.eclipse.jdt.core.compiler.debug.localVariable=generate
 org.eclipse.jdt.core.compiler.debug.sourceFile=generate
@@ -9,4 +17,8 @@ org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures=disabled
 org.eclipse.jdt.core.compiler.problem.forbiddenReference=warning
 org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures=warning
 org.eclipse.jdt.core.compiler.release=enabled
+<<<<<<< HEAD
 org.eclipse.jdt.core.compiler.source=21
+=======
+org.eclipse.jdt.core.compiler.source=18
+>>>>>>> branch 'master' of https://github.com/Peluas9000/Tarea14.git
